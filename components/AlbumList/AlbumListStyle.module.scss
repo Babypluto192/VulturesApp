@@ -1,0 +1,24 @@
+.listEl {
+  font-size: 1.5rem;
+  border: black solid 1px;
+  width: 80%;
+  box-shadow: #1c1c1c;
+  border-radius: 5%;
+  background: #1c1c1c;
+  color: white;
+  margin-left: 10vw;
+  margin-top: 2vh;
+  height: 11vh;
+  display: flex;
+  flex-direction: row;
+
+
+
+}
+
+.listEl button {
+  position: relative;
+  left: 4vw;
+
+}
+

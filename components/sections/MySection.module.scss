@@ -1,0 +1,28 @@
+$img-height: 20vh;
+$img-weight: 40vw;
+.img1 {
+  width: $img-weight;
+  height:  $img-height;
+}
+
+.img2 {
+  width: $img-weight;
+  height:  $img-height;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 10vw;
+  margin-left: 4vw;
+  padding-bottom: 3vh;
+}
+
+.title {
+  margin-left: 3vw;
+  font-size: 2rem;
+}
+
+.caption {
+  font-size: 1.5rem;
+}
