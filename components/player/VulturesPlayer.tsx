@@ -34,7 +34,8 @@ const VulturesPlayer = () => {
                 title: fileName,
                 source: "http://localhost:4000" + fileURL
             }));
-
+            setTimeout(() => {
+            }, 3000);
             setPlaylist(newPlaylist);
 
             setStatus('Download and unzip completed');
@@ -45,17 +46,21 @@ const VulturesPlayer = () => {
     };
 
     useEffect(() => {
-        handleDownloadAndUnzip();
+        handleDownloadAndUnzip()
     }, []);
 
     useEffect(() => {
         PlayerInterface.setPlaylist(playlist);
     }, [playlist]);
 
+
+
+
     return (
         <div>
+
             <Player />
-            <div>Status: {status}</div>
+
         </div>
     );
 };
