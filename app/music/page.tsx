@@ -1,18 +1,21 @@
+
 import React from 'react';
 import classes from "./MusicStyles.module.scss";
 import VulturesHeader from "@/components/header/VulturesHeader";
-import VulturesFooter from "@/components/footer/VulturesFooter";
-import VulturesPlayer from "@/components/player/VulturesPlayer";
 import VulturesAlbum from "@/components/AlbumComponent/VulturesAlbum";
-import Image from "next/image";
+import dynamic from 'next/dynamic'
+
+const VulturesPlayer = dynamic(() => import('@/components/player/VulturesPlayer'), {
+    ssr: false,
+})
 const Music = () => {
     return (
         <div>
-            <VulturesHeader />
+
             <h1 className={classes.title}> Music</h1>
 
 
-            <VulturesAlbum/>
+            <VulturesAlbum albumartist="Kanye West & Ty Dolla $ign" albumtitle="Vultures 1" albumtitlemargin={{marginLeft: 140}} albumcover="/Cover.webp"/>
 
             <VulturesPlayer />
 

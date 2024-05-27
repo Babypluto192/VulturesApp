@@ -14,7 +14,7 @@ const MySection = ( {title, imageurl1, imageurl2, caption2, caption1}:IMySection
                         <figcaption className={classes.caption}>{caption1}</figcaption>
                     </figure>
                     <figure>
-                        <Image className={classes.img2} src={imageurl1} alt={caption2} width={400} height={400}/>
+                        <Image className={classes.img2} src={imageurl2} alt={caption2} width={400} height={400}/>
                         <figcaption className={classes.caption}>{caption2}</figcaption>
                     </figure>
                 </div>

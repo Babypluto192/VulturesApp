@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import localFont from 'next/font/local'
-import {NextFont} from "next/dist/compiled/@next/font";
+import VulturesFooter from "@/components/footer/VulturesFooter";
+import React from "react";
+import VulturesHeader from "@/components/header/VulturesHeader";
 
-const myFont:NextFont = localFont({ src: '../fonts/GregorianFLF.ttf' })
 
 
 export const metadata: Metadata = {
   title: "Vultures App",
   description: "Vultures app",
+  manifest: "/manifest.json"
 };
 
 export default function RootLayout({
@@ -18,7 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={myFont.className}>{children}</body>
+      <body >
+      <VulturesHeader/>
+      {children}
+
+      <VulturesFooter/>
+      </body>
     </html>
   );
 }

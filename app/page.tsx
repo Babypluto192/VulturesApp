@@ -6,15 +6,17 @@ import VulturesFooter from "@/components/footer/VulturesFooter";
 
 export default function Home() {
   return (
-    <div>
-    <VulturesHeader  />
+    <div >
+
       <main>
         <h2 className={classes.mainTitle}> Main</h2>
       </main>
       <VulturesSection title={"News"} imageurl1={""} imageurl2={""} caption2={""} caption1={""}/>
       <VulturesSection title={"Music"} imageurl1={""} imageurl2={""} caption2={""} caption1={""}/>
       <VulturesSection title={"Merch"} imageurl1={""} imageurl2={""} caption2={""} caption1={""}/>
-      <VulturesFooter />
+
     </div>
   );
 }
+
+
