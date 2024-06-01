@@ -1,12 +1,12 @@
 {
   "name": "Vultures App",
+  "prefer_related_applications": true,
   "short_name": "Vultures",
   "start_url": ".",
   "display": "standalone",
   "background_color": "white",
-  "theme_color": "light",
+  "theme_color": "white",
   "description": "Vultures app where you can listen music or more",
-  "prefer_related_applications": "true",
   "icons": [
     {
       "src": "/favicon.png",

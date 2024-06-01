@@ -3,9 +3,12 @@ import AlbumList from "@/components/AlbumList/AlbumList";
 import Image from "next/image";
 import classes from "./VulturesAlbumStyle.module.scss"
 import {IalbumProps} from "@/components/AlbumComponent/IalbumProps";
+import {Provider} from "react-redux";
+import {store} from "@/app/store";
 
 const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist}:IalbumProps) => {
     return (
+
         <div>
             <h2 className={classes.title} style={albumtitlemargin}>{albumtitle}  </h2>
 
@@ -18,6 +21,7 @@ const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist}:I
             <AlbumList/>
             </div>
         </div>
+
     );
 };
 
