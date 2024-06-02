@@ -1,12 +1,12 @@
 import React from 'react';
-import AlbumList from "@/components/AlbumList/AlbumList";
 import Image from "next/image";
 import classes from "./VulturesAlbumStyle.module.scss"
-import {IalbumProps} from "@/components/AlbumComponent/IalbumProps";
-import {Provider} from "react-redux";
-import {store} from "@/app/store";
-
-const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist}:IalbumProps) => {
+import {IalbumProps} from "@/interfaces/IalbumProps";
+import dynamic from "next/dynamic";
+const AlbumList = dynamic(() => import('@/components/AlbumList/AlbumList'), {
+    ssr: false,
+})
+const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist, tracks, isLoading, playlist}:IalbumProps) => {
     return (
 
         <div>
@@ -18,7 +18,7 @@ const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist}:I
             </figure>
 
             <div className={classes.container}>
-            <AlbumList/>
+            <AlbumList tracks={tracks} isLoading={isLoading} playlist={playlist}/>
             </div>
         </div>
 

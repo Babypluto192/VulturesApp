@@ -6,5 +6,19 @@ module.exports = withPWA({
         register: "true",
         skipWaiting: "true",
 
-    }
-})
+    }, }
+
+)
+
+module.exports = {
+    images: {
+    remotePatterns: [
+        {
+            protocol: 'http',
+            hostname: 'localhost',
+            port: '4000',
+            pathname: '**',
+        },
+    ],
+}
+}

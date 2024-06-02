@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Track } from './Itrack';
+import { Track } from '@/interfaces/Itrack';
 
-export const songsApi = createApi({
-    reducerPath: 'songsApi',
+export const vultures1Api = createApi({
+    reducerPath: 'vultures1Api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }),
     endpoints: (builder) => ({
         getTracks: builder.query<Track[], void>({
-            query: () => 'tracks',
+            query: () => 'vultures1',
         }),
     }),
 });
 
-export const { useGetTracksQuery } = songsApi;
+export const { useGetTracksQuery } = vultures1Api;

@@ -14,15 +14,24 @@ $img-weight: 40vw;
   display: flex;
   flex-direction: row;
   gap: 10vw;
-  margin-left: 4vw;
+  margin-left: 6vw;
   padding-bottom: 3vh;
+}
+.container figure {
+  width: 40vw;
 }
 
 .title {
-  margin-left: 3vw;
+  margin-left: 6vw;
   font-size: 2rem;
 }
 
 .caption {
+  margin-top: 2vh;
   font-size: 1.5rem;
+
+}
+
+.description {
+  max-width: 90vw;
 }

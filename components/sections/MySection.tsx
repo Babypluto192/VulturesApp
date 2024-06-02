@@ -1,13 +1,14 @@
 import React from 'react';
-import {IMySection} from "@/components/sections/IMySection";
+import {IMySection} from "@/interfaces/IMySection";
 import Image from "next/image";
-import PlaceHolder from "@/public/placeholder.png"
+
 import classes from "./MySection.module.scss";
+
 const MySection = ( {title, imageurl1, imageurl2, caption2, caption1}:IMySection ) => {
     return (
 
             <section >
-                <h3 className={classes.title}> {title}</h3>
+                <h3 lang="en" className={classes.title}> {title}</h3>
                 <div className={classes.container}>
                     <figure>
                         <Image className={classes.img1} src={imageurl1} alt={caption1} width={400} height={400}/>

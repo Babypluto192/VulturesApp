@@ -1,25 +1,24 @@
+"use client"
 import React from 'react';
 import classes from "./LeaksStyle.module.scss";
-import VulturesHeader from "@/components/header/VulturesHeader";
 import VulturesAlbum from "@/components/AlbumComponent/VulturesAlbum";
+import PreColabAlbum from "@/components/PreColab/PreColabAlbum";
+import BadPlaybook from "@/components/BBPB1/BadPlaybook";
 
-import dynamic from "next/dynamic";
+import Vultures2Album from "@/components/Vultures2/Vultures2Album";
 
 
-const VulturesPlayer = dynamic(() => import('@/components/player/VulturesPlayer'), {
-    ssr: false,
-})
 const Page = () => {
+
     return (
         <div >
 
             <h3 className={classes.title}> Leaks</h3>
-            <VulturesAlbum albumartist="Ty Dolla $ign & Chris Brown" albumcover="/Cover1.png" albumtitle="Collab with Chris Brown" albumtitlemargin={{marginLeft: 48}}/>
-            <VulturesAlbum albumartist="Kanye West & Ty Dolla $ign" albumtitle="Bad B**** Playbook 1" albumtitlemargin={{marginLeft: 80}} albumcover="/Cover2.jpg"/>
-            <VulturesAlbum albumartist="Kanye West & Ty Dolla $ign" albumtitle="Vultures 2" albumtitlemargin={{marginLeft: 140}} albumcover="/Cover3.png"/>
-            <VulturesAlbum albumartist="Kanye West & Ty Dolla $ign" albumtitle="Vultures 3" albumtitlemargin={{marginLeft: 140}} albumcover="/Cover3.webp"/>
+            <PreColabAlbum />
+            <BadPlaybook />
+            <Vultures2Album />
+            <VulturesAlbum albumartist="Kanye West & Ty Dolla $ign" albumtitle="Vultures 3" albumtitlemargin={{marginLeft: 140}} albumcover="/Cover3.webp" tracks={[]} playlist={[]} isLoading={false}/>
 
-            <VulturesPlayer />
         </div>
     );
 };

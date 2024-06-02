@@ -1,45 +1,23 @@
 "use client"
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import classes from "./AlbumListStyle.module.scss";
 import "./AlbumListStyle.scss";
-import {useGetTracksQuery} from "@/app/api";
 import {PlayerInterface, Track as PlayerTrack} from "react-material-music-player";
-import VulturesPlayer from "@/components/player/VulturesPlayer";
+import {Track} from "@/interfaces/Itrack";
 
-const AlbumList: React.FC = () => {
-    const { data:tracks , error, isLoading } = useGetTracksQuery();
-    const [playlist, setPlaylist] = useState<PlayerTrack[]>([]);
-    const source = "http://localhost:4000"
-    const artist:string = "Kanye West & Ty Dolla $ign"
-    useEffect(() => {
-        if (tracks) {
-            const newPlaylist: PlayerTrack[] = tracks.map((track: { fileName: any; fileURL: any; }) => ({
-                getSource() {
-                    return "";
-                },
-                ID: track.fileName,
-                coverArt: "/Cover.webp",
-                artist: artist,
-                title: track.fileName,
-                source: source + track.fileURL,
-            }));
-            setPlaylist(newPlaylist);
-        }
-    }, [tracks]);
+const AlbumList = ({tracks, isLoading,playlist }: {tracks: Track[], isLoading: boolean, playlist: PlayerTrack[]}) => {
 
 
     if(isLoading) return <> <h3>Loading</h3> </>
-
     return (
         <div>
         <ul>
             { tracks === undefined ? <></> :
                 tracks.map((el) => (
                     <li key={el.fileName} className={classes.listEl}>
-                        {el.fileName}
-                        <br/>
-                        Kanye West & Ty Dolla $ign
+                        {(el.fileName).replace('.mp3', '').replace('.wav', '')}
                         <button onClick={() => {
+
                             const chosenTrack = playlist.find(track => track.ID === el.fileName);
                             if (chosenTrack) {
                                 const chosenIndex = playlist.findIndex(track => track.ID === el.fileName);
@@ -66,7 +44,7 @@ const AlbumList: React.FC = () => {
                 ))}
         </ul>
 
-            <VulturesPlayer/>
+
         </div>
     );
 };

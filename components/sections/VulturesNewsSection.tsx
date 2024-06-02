@@ -1,12 +1,12 @@
 import React from 'react';
-import VulturesSection from "@/components/sections/VulturesSection";
-import MySection2 from "@/components/sections/MySection2";
-import {IMySection2} from "@/components/sections/IMySection2";
 
-const VulturesNewsSection = ({description1, imageurl1, caption1}:IMySection2) => {
+import MySection2 from "@/components/sections/MySection2";
+import {IMySection2} from "@/interfaces/IMySection2";
+
+const VulturesNewsSection = ({description1, imageurl1, caption1, id}:IMySection2) => {
     return (
-      <div>
-        <MySection2 description1={description1}   imageurl1={imageurl1}  caption1={caption1} />
+      <div lang="ru">
+        <MySection2 description1={description1}   imageurl1={"http://localhost:4000" + imageurl1}  caption1={caption1} id={id} />
       </div>
     );
 };

@@ -1,15 +1,14 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import "./PlayerStyles.scss";
-import Player, { PlayerInterface, Track as PlayerTrack } from 'react-material-music-player';
-import { useGetTracksQuery } from '@/app/api';
+import Player from 'react-material-music-player';
 
 const VulturesPlayer = () => {
 
 
     return (
         <div>
-            <Player />
+            <Player sx={{"bottom": 50}} />
         </div>
     );
 };

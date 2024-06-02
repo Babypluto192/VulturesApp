@@ -3,8 +3,13 @@ import "./globals.css";
 import VulturesFooter from "@/components/footer/VulturesFooter";
 import React from "react";
 import VulturesHeader from "@/components/header/VulturesHeader";
+import dynamic from "next/dynamic";
 
+import ReduxProvider from "@/components/ReduxProvider/ReduxProvider";
 
+const VulturesPlayer = dynamic(() => import('@/components/player/VulturesPlayer'), {
+    ssr: false,
+})
 
 export const metadata: Metadata = {
   title: "Vultures App",
@@ -22,10 +27,12 @@ export default function RootLayout({
       <body >
 
       <VulturesHeader/>
+        <ReduxProvider>
       {children}
-
+        </ReduxProvider>
       <VulturesFooter/>
 
+      <VulturesPlayer/>
 
       </body>
     </html>
