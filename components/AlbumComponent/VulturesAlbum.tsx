@@ -6,11 +6,11 @@ import dynamic from "next/dynamic";
 const AlbumList = dynamic(() => import('@/components/AlbumList/AlbumList'), {
     ssr: false,
 })
-const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist, tracks, isLoading, playlist}:IalbumProps) => {
+const VulturesAlbum = ({albumtitle, albumcover, albumartist, tracks, isLoading, playlist}:IalbumProps) => {
     return (
 
         <div>
-            <h2 className={classes.title} style={albumtitlemargin}>{albumtitle}  </h2>
+            <h2 className={classes.title} >{albumtitle}  </h2>
 
             <figure>
                 <Image src={albumcover || "/Cover.png"} alt={albumtitle + "cover"}  width={400} height={400} className={classes.cover}/>

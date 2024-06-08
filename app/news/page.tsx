@@ -1,25 +1,27 @@
 "use client"
 import React from 'react';
 import classes from "./NewsStyle.module.scss";
-
-
 import VulturesNewsSection from "@/components/sections/VulturesNewsSection";
-import {useGetNewsQuery} from "@/app/news/NewsApi";
+import {useSelector} from "react-redux";
+import {selectAllNewsItems} from "@/slices/newsSlice";
 
 const Page = () => {
-    const {data } = useGetNewsQuery()
+    const data = useSelector(selectAllNewsItems);
     return (
-        <div className={classes.font}>
-
-
+        <div>
             <h3 className={classes.title}> NEWS </h3>
-
-            {
-                data ? data.map((el) => <VulturesNewsSection key={el.id} description1={el.description} imageurl1={el.image} caption1={el.title} id={el.id}/> ) : <></>
-
-            }
+            <div className={classes.font}>
 
 
+                {
+                    data ? data.map((el) => <VulturesNewsSection key={el.id} description1={el.description}
+                                                                 imageurl1={el.image} caption1={el.title}
+                                                                 id={el.id}/>) : <></>
+
+                }
+
+
+            </div>
 
         </div>
     );

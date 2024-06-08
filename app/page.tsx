@@ -1,76 +1,82 @@
 "use client"
-import classes from "./Main.module.scss";
-import VulturesSection from "@/components/sections/VulturesSection";
-import {useGetTracksQuery} from "@/components/VulturesAlbum1/Vultures1Api";
-import Link from "next/link";
-import {useGetNewsQuery} from "@/app/news/NewsApi";
-import {useGetMerchQuery} from "@/app/merch/MerchApi";
-import {useDispatch, useSelector} from "react-redux";
-import { setMerch} from "./admin/songsSlice"
-import {useEffect, useState} from "react";
+import React, { useEffect } from 'react';
+import VulturesSection from '@/components/sections/VulturesSection';
+import { useGetTracksQuery } from '@/api/vultures1Api';
+import Link from 'next/link';
+import { useGetNewsQuery } from '@/api/newsApi';
+import { useGetMerchQuery } from '@/api/merchApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@/app/store';
+import { setMerch } from '@/slices//merchSlice';
+import { setLoading } from '@/slices/requestSlice';
+import { setNews } from '@/slices/newsSlice';
+import getRandom from '@/hooks/getRandom';
+import {useGetConcertsQuery} from "@/api/concertApi";
+import { setConcert} from "@/slices/concertSlice";
 
 export default function Home() {
+    const loading = useSelector((state: RootState) => state.request.loading);
+    const dispatch = useDispatch<AppDispatch>();
 
-    const { data:tracks  } = useGetTracksQuery();
-
-    const dispatch = useDispatch();
-
-    const [merchSet, setMerchSet] = useState(false);
-    const {data:Merch} = useGetMerchQuery();
+    const { data: tracks } = useGetTracksQuery();
+    const { data: Merch } = useGetMerchQuery();
+    const { data: news } = useGetNewsQuery();
+    const {data:concert} = useGetConcertsQuery()
 
     useEffect(() => {
-        if (Merch && !merchSet) {
+        if (!loading && Merch !== undefined && news !== undefined && concert !== undefined) {
             dispatch(setMerch(Merch));
-            setMerchSet(true);
+            dispatch(setNews(news));
+            dispatch(setConcert(concert))
+            dispatch(setLoading(true));
         }
-    }, [dispatch, Merch, merchSet]);
+    }, [dispatch, loading, Merch, news, concert]);
 
+    let musicCaption1 = '';
+    let musicCaption2 = '';
 
-
-    let musicCaption1,musicCaption2,newsCaption1,newsCaption2, newsImage1, newsImage2, merchCaption1, merchCaption2,merchImage1,merchImage2:string = ""
-    const url:string = "http://localhost:4000"
-     if(tracks !== undefined) {
-         musicCaption1 = tracks[Math.floor(Math.random()* tracks.length)].fileName
-         musicCaption2 = tracks[Math.floor(Math.random()* tracks.length)].fileName
-         while (musicCaption1 === musicCaption2) {
-             musicCaption2 = tracks[Math.floor(Math.random()* tracks.length)].fileName
-         }
-     }
-    const {data:news } = useGetNewsQuery()
-
-    if (news !== undefined && news.length > 0 && Merch !== undefined) {
-        const first = Math.floor(Math.random() * news.length);
-        let second = Math.floor(Math.random() * news.length);
-        while (second === first) {
-            second = Math.floor(Math.random() * news.length);
+    if (tracks !== undefined && tracks.length > 0) {
+        let randomIndex1 = Math.floor(Math.random() * tracks.length);
+        let randomIndex2 = Math.floor(Math.random() * tracks.length);
+        while (randomIndex2 === randomIndex1) {
+            randomIndex2 = Math.floor(Math.random() * tracks.length);
         }
-        merchCaption1 = Merch[first].title
-        merchCaption2 = Merch[second].title
-        merchImage1 = url +  Merch[first].image;
-        merchImage2 = url + Merch[second].image;
-        newsCaption1 = news[first].title;
-        newsCaption2 = news[second].title;
-        newsImage1 = news[first].image;
-        newsImage2 = news[second].image;
+        musicCaption1 = tracks[randomIndex1].fileName || '';
+        musicCaption2 = tracks[randomIndex2].fileName || '';
     }
 
-    const newsImageUrl1 = newsImage1 ? url + newsImage1 : "/placeholder.png";
-    const newsImageUrl2 = newsImage2 ? url + newsImage2 : "/placeholder.png";
+    const [caption1, caption2, image1, image2] = getRandom(news || []);
+    const [caption3, caption4, image3, image4] = getRandom(Merch || []);
 
     return (
-
-    <div >
-
-      <main>
-        <h2 className={classes.mainTitle}> Main</h2>
-      </main>
-        <Link lang="ru" href="/news"> <VulturesSection title={"News"} imageurl1={newsImageUrl1} imageurl2={newsImageUrl2} caption2={newsCaption2 || ""} caption1={newsCaption1 || ""} /> </Link>
-        <Link href="/music"> <VulturesSection title={"Music"} imageurl1={"/Cover.png"} imageurl2={"/Cover.png"} caption2={musicCaption2 || ""} caption1={musicCaption1 || ""}/> </Link>
-        <Link href="/merch"> <VulturesSection title={"Merch"} imageurl1={merchImage1 || '/placeholder.png'} imageurl2={merchImage2 || '/placeholder.png'} caption2={merchCaption2 || ""} caption1={merchCaption1 || ""}/></Link>
-
-    </div>
-
-  );
+        <div>
+            <Link lang="ru" href="/news">
+                <VulturesSection
+                    title={'News'}
+                    imageurl1={image1 || '/placeholder.png'}
+                    imageurl2={image2 || '/placeholder.png'}
+                    caption2={caption2 || ''}
+                    caption1={caption1 || ''}
+                />
+            </Link>
+            <Link href="/music">
+                <VulturesSection
+                    title={'Music'}
+                    imageurl1={'/Cover.png'}
+                    imageurl2={'/Cover.png'}
+                    caption2={musicCaption2 || ''}
+                    caption1={musicCaption1 || ''}
+                />
+            </Link>
+            <Link href="/merch">
+                <VulturesSection
+                    title={'Merch'}
+                    imageurl1={image3 || '/placeholder.png'}
+                    imageurl2={image4 || '/placeholder.png'}
+                    caption2={caption4 || ''}
+                    caption1={caption3 || ''}
+                />
+            </Link>
+        </div>
+    );
 }
-
-

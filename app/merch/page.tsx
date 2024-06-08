@@ -1,13 +1,13 @@
 "use client"
 import React from 'react';
 import classes from "./MerchStyle.module.scss";
-
 import VulturesMerchSection from "@/components/sections/VulturesMerchSection";
 import {useSelector} from "react-redux";
-import {RootState} from "@/app/store";
-const Page = () => {
-    const Merch = useSelector((state:RootState) => state.merch)
+import {selectAllMerchItems} from "@/slices/merchSlice";
 
+
+const Page = () => {
+    const Merch = useSelector(selectAllMerchItems);
     return (
         <div className={classes.container}>
             { Merch ? Merch.map((el) => {

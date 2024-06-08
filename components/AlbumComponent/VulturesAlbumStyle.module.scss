@@ -1,8 +1,17 @@
 .title {
   font-size: 2rem;
   margin-left: 36vw;
+  max-width: 41vw;
+  @media (min-width:801px) {
+    margin-left: 45vw;
+  }
 }
 .cover {
+  @media (min-width:801px) {
+    width: 40vw;
+    height: 80vh;
+    margin-left: 30vw;
+  }
   width: 80vw;
   height: 40vh;
   margin-left: 10vw;
@@ -12,7 +21,12 @@
 }
 
 .caption {
+  @media (min-width:801px) {
+
+    margin-left: 45vw;
+  }
   margin-left: 20vw;
+
   font-size: 1.4rem;
   margin-top: 2vh;
 }

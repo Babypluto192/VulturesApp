@@ -4,7 +4,6 @@ import VulturesFooter from "@/components/footer/VulturesFooter";
 import React from "react";
 import VulturesHeader from "@/components/header/VulturesHeader";
 import dynamic from "next/dynamic";
-
 import ReduxProvider from "@/components/ReduxProvider/ReduxProvider";
 
 const VulturesPlayer = dynamic(() => import('@/components/player/VulturesPlayer'), {
@@ -28,8 +27,11 @@ export default function RootLayout({
 
       <VulturesHeader/>
         <ReduxProvider>
+
       {children}
+
         </ReduxProvider>
+
       <VulturesFooter/>
 
       <VulturesPlayer/>

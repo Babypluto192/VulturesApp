@@ -5,7 +5,7 @@
 @tailwind utilities;
 @font-face {
     font-family: 'MyCustomFont';
-    src: url('../fonts/GregorianFLF.ttf') format('truetype');
+    src: url('/fonts/GregorianFLF.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

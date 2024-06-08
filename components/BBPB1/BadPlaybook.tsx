@@ -1,6 +1,6 @@
 import React from 'react';
 import VulturesAlbum from "@/components/AlbumComponent/VulturesAlbum";
-import {useGetLeaksBadBookQuery} from "./BadPlayBookApi";
+import {useGetLeaksBadBookQuery} from "@/api/badPlayBookApi";
 
 import useMakeTracks from "@/hooks/useMakeTracks";
 

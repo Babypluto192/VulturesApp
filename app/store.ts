@@ -1,13 +1,17 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {setupListeners} from "@reduxjs/toolkit/query";
-import {vultures1Api} from "@/components/VulturesAlbum1/Vultures1Api";
-import {preVulturesApi} from "@/components/PreColab/LeaksApi";
-import {badBookApi} from "@/components/BBPB1/BadPlayBookApi";
-import {vultures2Api} from "@/components/Vultures2/Vultures2Api";
-import {newsApi} from "./news/NewsApi"
-import {merchApi} from "@/app/merch/MerchApi";
-import {concertApi} from "@/app/concerts/ConcertApi";
-import merchReducer from './admin/songsSlice';
+import {vultures1Api} from "@/api/vultures1Api";
+import {preVulturesApi} from "@/api/leaksApi";
+import {badBookApi} from "@/api/badPlayBookApi";
+import {vultures2Api} from "@/api/vultures2Api";
+import {newsApi} from "@/api/newsApi"
+import {merchApi} from "@/api/merchApi";
+import {concertApi} from "@/api/concertApi";
+import merchReducer from '@/slices/merchSlice';
+import newsReducer from '@/slices/newsSlice';
+import requestReducer from "@/slices/requestSlice"
+import concertSlice from "@/slices/concertSlice";
+
 export const store = configureStore({
         reducer: {
             [vultures1Api.reducerPath] : vultures1Api.reducer,
@@ -18,7 +22,11 @@ export const store = configureStore({
             [merchApi.reducerPath]: merchApi.reducer,
             [concertApi.reducerPath]: concertApi.reducer,
             merch: merchReducer,
+            request: requestReducer,
+            news: newsReducer,
+            concert: concertSlice,
         },
+
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(vultures1Api.middleware).concat(preVulturesApi.middleware).concat(badBookApi.middleware).concat(vultures2Api.middleware).concat(newsApi.middleware).concat(merchApi.middleware).concat(concertApi.middleware)
     }

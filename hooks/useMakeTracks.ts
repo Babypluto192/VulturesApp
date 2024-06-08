@@ -17,8 +17,8 @@ export default function useMakeTracks(
         let artist: string = "Kanye West & Ty Dolla $ign";
         const featIndex = songName.indexOf('feat.');
         if (featIndex !== -1) {
-            const partBeforeFeat = songName.slice(featIndex + 5).trim(); // Added 5 to skip 'feat.' part
-            artist = `${artist} ${partBeforeFeat}`;
+            const partBeforeFeat = songName.slice(featIndex + 5).trim();
+            artist = `${artist},${partBeforeFeat}`;
         }
         return artist;
     }

@@ -1,18 +1,34 @@
+"use client"
 import React from 'react';
-import classes from "@/components/sections/MySection.module.scss";
-import Image from "next/image";
+import classes from "@/components/sections/VulturesMerchSection.module.scss";
+import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
 
 const VulturesMerchSection = ({title, imageurl1}: {title: string, imageurl1: string}) => {
+    const theme = createTheme({
+        typography: {
+            fontFamily: 'MyCustomFont , sans-serif'
+        },
+    })
     return (
-
-            <section >
-                <div className={classes.container}>
-                    <figure>
-                        <Image className={classes.img1} src={"http://localhost:4000" + imageurl1} alt={title + "image"} width={400} height={400}/>
-                        <figcaption className={classes.caption}>{title}</figcaption>
-                    </figure>
-                </div>
-            </section>
+        <section className={classes.container}>
+            <ThemeProvider theme={theme}>
+            <Card sx={{maxWidth: 345}}>
+                <CardActionArea>
+                    <CardMedia
+                        component="img"
+                        image={"http://localhost:4000" + imageurl1}
+                        alt={title}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {title}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+            </ThemeProvider>
+        </section>
     );
 };
 

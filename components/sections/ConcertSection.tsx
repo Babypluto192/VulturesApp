@@ -1,6 +1,5 @@
 "use client"
 import React from 'react';
-import Image from "next/image";
 import classes from "./ConcertSection.module.scss";
 import {Card, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
 import Button from "@mui/material/Button";

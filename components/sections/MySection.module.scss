@@ -1,13 +1,25 @@
 $img-height: 20vh;
-$img-weight: 40vw;
-.img1 {
-  width: $img-weight;
-  height:  $img-height;
+$img-width: 40vw;
+
+.section {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.img2 {
-  width: $img-weight;
-  height:  $img-height;
+.title {
+  margin-left: 6vw;
+  font-size: 2.5rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .container {
@@ -16,22 +28,29 @@ $img-weight: 40vw;
   gap: 10vw;
   margin-left: 6vw;
   padding-bottom: 3vh;
-}
-.container figure {
-  width: 40vw;
+  justify-content: center;
 }
 
-.title {
-  margin-left: 6vw;
-  font-size: 2rem;
+.figure {
+  width: $img-width;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .caption {
-  margin-top: 2vh;
-  font-size: 1.5rem;
-
-}
-
-.description {
-  max-width: 90vw;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  font-weight: 500;
 }

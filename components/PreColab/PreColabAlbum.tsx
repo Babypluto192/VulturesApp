@@ -1,7 +1,6 @@
 "use client"
 import React from 'react';
-import {useGetLeaksQuery} from "./LeaksApi";
-
+import {useGetLeaksQuery} from "@/api/leaksApi";
 import VulturesAlbum from "@/components/AlbumComponent/VulturesAlbum";
 import useMakeTracks from "@/hooks/useMakeTracks";
 

@@ -1,19 +1,20 @@
 "use client"
 import React from 'react';
-import {useGetNewsQuery} from "@/app/news/NewsApi";
 import News from "@/interfaces/INews";
 import Image from "next/image";
 import classes from "./NewsDetail.module.scss";
+import {useSelector} from "react-redux";
+import {selectAllNewsItems} from "@/slices/newsSlice";
 
 const Page = ({params} : { params: { id: number }}) => {
-    const {data, isLoading } = useGetNewsQuery()
+    const data = useSelector(selectAllNewsItems);
     let news:News = {
         id: 0,
         title: '',
         description: '',
         image: ''
     }
-    if(!isLoading) {
+
 
         if (data) {
             for (let i = 0; i < data.length; i++) {
@@ -22,7 +23,7 @@ const Page = ({params} : { params: { id: number }}) => {
                 }
             }
         }
-    }
+
 
     return (
         <div lang="ru" className={classes.container}>

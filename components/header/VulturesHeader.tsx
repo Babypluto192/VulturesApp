@@ -1,9 +1,16 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
-import classes from "./VulturesHeader.module.scss";
 import VulturesMenu from "@/components/Menu/VulturesMenu";
 import Link from "next/link";
-
+import {Box} from "@mui/system";
+import {
+    AppBar, Drawer,
+    IconButton,
+    Toolbar,
+    Typography
+} from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
+import {createTheme, ThemeProvider} from "@mui/material/styles";
 const VulturesHeader = () => {
     const [showMenu, setShowMenu] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
@@ -25,22 +32,53 @@ const VulturesHeader = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [showMenu]);
+    const theme = createTheme({
+        typography: {
+            fontFamily: 'MyCustomFont , sans-serif'
+        },
+        palette: {
+            secondary: {
+                main: '#3c3c3c'
+            }
+        }
+    })
+
+
 
     return (
         <header>
-            {showMenu && (
-                <div ref={menuRef}>
-                    <VulturesMenu />
-                </div>
-            )}
-            <div className={classes.headercontainer}>
-                <Link href="/"> <h1 className={classes.title}>Vultures App</h1></Link>
-                <button onClick={() => setShowMenu(!showMenu)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className={classes.MenuButton} viewBox="0 0 16 16">
-                        <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                    </svg>
-                </button>
-            </div>
+
+
+                    <Drawer open={showMenu}>
+                        <div  ref={menuRef}>
+                        {VulturesMenu}
+                        </div>
+                    </Drawer>
+
+
+            <ThemeProvider theme={theme}>
+            <Box sx={{ flexGrow: 1 }} >
+                <AppBar position="static" color="secondary">
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                            onClick={() => setShowMenu(!showMenu)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                      <Link href="/" > <Typography variant="h3" component="div" sx={{ flexGrow: 1 }} >
+                            Vultures App
+                        </Typography></Link>
+                    </Toolbar>
+                </AppBar>
+            </Box>
+            </ThemeProvider>
+
+
         </header>
     );
 };

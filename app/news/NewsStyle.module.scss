@@ -5,3 +5,12 @@
 
 
 }
+
+
+.font {
+  @media (min-width:801px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import VulturesAlbum from "@/components/AlbumComponent/VulturesAlbum";
-import {useGetLeaksVultures2Query} from "./Vultures2Api";
+import {useGetLeaksVultures2Query} from "@/api/vultures2Api";
 import useMakeTracks from "@/hooks/useMakeTracks";
 
 

@@ -1,15 +1,8 @@
-.title {
-  font-size: 2rem;
-  margin-top: 2vh;
-  margin-left: 10vw;
-
-
-}
 
 .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 3vh;
-  margin-left: 3vw;
+  @media (min-width:801px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }

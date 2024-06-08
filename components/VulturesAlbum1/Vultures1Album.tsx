@@ -1,6 +1,6 @@
 import React from 'react';
 import useMakeTracks from "@/hooks/useMakeTracks";
-import {useGetTracksQuery} from "./Vultures1Api";
+import {useGetTracksQuery} from "@/api/vultures1Api";
 import VulturesAlbum from "@/components/AlbumComponent/VulturesAlbum";
 
 const Vultures1Album = () => {

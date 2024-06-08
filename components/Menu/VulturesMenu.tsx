@@ -1,22 +1,62 @@
+"use client"
 import React from 'react';
-import classes from "./MenuStyle.module.scss";
 import Link from "next/link";
+import {Box} from "@mui/system";
+import List from "@mui/material/List";
+import {Divider, ListItem, ListItemButton} from "@mui/material";
 
 
-const VulturesMenu = () => {
-    return (
-        <div>
-            <ul className={classes.menuContainer}>
-                <li> <Link href="/">Home</Link></li>
-                <li><Link href="/music">Music</Link></li>
-                <li><Link href="/news">News </Link></li>
-                <li><Link href="/merch">Merch </Link></li>
-                <li><Link href="/leaks">Leaks </Link></li>
-                <li><Link href="/concerts">Concerts </Link></li>
-                <li><Link href="/admin"> Admin</Link> </li>
-            </ul>
-        </div>
+const VulturesMenu =  (
+
+
+    <Box sx={{ width: 250 }} role="presentation" >
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/">
+                        Home
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/music">
+                        Music
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/news">
+                        News
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/merch">
+                        Merch
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/leaks">
+                        Leaks
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/concerts">
+                        Concerts
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} href="/admin">
+                        Admin
+                    </ListItemButton>
+                </ListItem>
+                <Divider />
+            </List>
+    </Box>
+
     );
-};
+
 
 export default VulturesMenu;

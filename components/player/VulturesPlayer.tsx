@@ -8,7 +8,7 @@ const VulturesPlayer = () => {
 
     return (
         <div>
-            <Player sx={{"bottom": 50}} />
+            <Player sx={{"bottom": 56}} />
         </div>
     );
 };
