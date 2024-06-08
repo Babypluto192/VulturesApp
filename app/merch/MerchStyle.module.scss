@@ -1,7 +1,15 @@
 .title {
   font-size: 2rem;
-  margin-top: 20vh;
+  margin-top: 2vh;
   margin-left: 10vw;
 
 
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 3vh;
+  margin-left: 3vw;
 }

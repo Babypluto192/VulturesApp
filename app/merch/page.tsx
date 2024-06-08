@@ -1,11 +1,19 @@
+"use client"
 import React from 'react';
 import classes from "./MerchStyle.module.scss";
-import VulturesHeader from "@/components/header/VulturesHeader";
-const Page = () => {
-    return (
-        <div >
 
-            <h3 className={classes.title}> IN DEVELOPMENT</h3>
+import VulturesMerchSection from "@/components/sections/VulturesMerchSection";
+import {useSelector} from "react-redux";
+import {RootState} from "@/app/store";
+const Page = () => {
+    const Merch = useSelector((state:RootState) => state.merch)
+
+    return (
+        <div className={classes.container}>
+            { Merch ? Merch.map((el) => {
+                return <div key={Number(el.id)}> <a href="https://yeezy.com" ><VulturesMerchSection  title={el.title.toString()} imageurl1={el.image.toString()}/></a></div>
+            }) : <></> }
+
         </div>
     );
 };

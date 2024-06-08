@@ -15,7 +15,7 @@ const Page = () => {
             <h3 className={classes.title}> NEWS </h3>
 
             {
-                data ? data.map((el, index) => <VulturesNewsSection key={el.title} description1={el.description} imageurl1={el.image} caption1={el.title} id={index}/> ) : <></>
+                data ? data.map((el) => <VulturesNewsSection key={el.id} description1={el.description} imageurl1={el.image} caption1={el.title} id={el.id}/> ) : <></>
 
             }
 

@@ -13,7 +13,7 @@ const VulturesAlbum = ({albumtitle, albumtitlemargin, albumcover, albumartist, t
             <h2 className={classes.title} style={albumtitlemargin}>{albumtitle}  </h2>
 
             <figure>
-                <Image src={albumcover || "/Cover.webp"} alt={albumtitle + "cover"}  width={400} height={400} className={classes.cover}/>
+                <Image src={albumcover || "/Cover.png"} alt={albumtitle + "cover"}  width={400} height={400} className={classes.cover}/>
                 <figcaption className={classes.caption}> {albumartist}</figcaption>
             </figure>
 

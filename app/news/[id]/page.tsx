@@ -8,6 +8,7 @@ import classes from "./NewsDetail.module.scss";
 const Page = ({params} : { params: { id: number }}) => {
     const {data, isLoading } = useGetNewsQuery()
     let news:News = {
+        id: 0,
         title: '',
         description: '',
         image: ''
@@ -16,7 +17,7 @@ const Page = ({params} : { params: { id: number }}) => {
 
         if (data) {
             for (let i = 0; i < data.length; i++) {
-                if (params.id == i) {
+                if (params.id == data[i].id) {
                     news = data[i]
                 }
             }

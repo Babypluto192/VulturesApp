@@ -7,7 +7,7 @@ import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, QueryD
 
 export default function useMakeTracks(
     useGetTracks: () => UseQueryHookResult<QueryDefinition<any, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, "Tracks", Track[], "api">>,
-    coverArt: string = "/Cover.webp"
+    coverArt: string = "/Cover.png"
 ) {
     const { data: tracks, isLoading } = useGetTracks();
     const [playlist, setPlaylist] = useState<PlayerTrack[]>([]);

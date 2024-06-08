@@ -1,4 +1,4 @@
-import {Track} from "@/app/Itrack";
+import {Track} from "./Itrack";
 import {Track as PlayerTrack} from "react-material-music-player"
 export interface IalbumProps {
     albumtitle: string,

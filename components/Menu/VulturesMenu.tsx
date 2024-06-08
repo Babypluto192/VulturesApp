@@ -13,7 +13,7 @@ const VulturesMenu = () => {
                 <li><Link href="/merch">Merch </Link></li>
                 <li><Link href="/leaks">Leaks </Link></li>
                 <li><Link href="/concerts">Concerts </Link></li>
-                <li>Admin (not available) </li>
+                <li><Link href="/admin"> Admin</Link> </li>
             </ul>
         </div>
     );
